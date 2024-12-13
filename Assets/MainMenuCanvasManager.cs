@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenuCanvasManager : MonoBehaviour
 {
+    // Start is called before the first frame update
     [Header("Main Menu Screen")]
     [SerializeField]
     private GameObject _mainMenuUI;
@@ -122,13 +121,6 @@ public class MainMenuCanvasManager : MonoBehaviour
         _Leaderboard.SetActive(false);
         _stageSelectionUI.SetActive(true);
         _mainMenuUI.SetActive(false);
-        // _icAND.SetActive(false);
-        // _icOR.SetActive(false);
-        // _icNAND.SetActive(false);
-        // _icNOR.SetActive(false);
-        // _icNOT.SetActive(false);
-        // _icXOR.SetActive(false);
-        // _icXNOR.SetActive(false);
     }
 
     public void OnOpenLoading()
@@ -138,104 +130,6 @@ public class MainMenuCanvasManager : MonoBehaviour
         _stageSelectionUI.SetActive(false);
         _Leaderboard.SetActive(false);
     }
-
-    // public void OnOpenICAnd()
-    // {
-    //     _icAND.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXOR.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICOr()
-    // {
-    //     _icOR.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXOR.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICNand()
-    // {
-    //     _icNAND.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXOR.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICNor()
-    // {
-    //     _icNOR.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXOR.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICNot()
-    // {
-    //     _icNOT.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icXOR.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICXor()
-    // {
-    //     _icXOR.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXNOR.SetActive(false);
-    // }
-
-    // public void OnOpenICXnor()
-    // {
-    //     _icXNOR.SetActive(true);
-
-    //     _mainMenuUI.SetActive(false);
-    //     _stageSelectionUI.SetActive(false);
-    //     _icNAND.SetActive(false);
-    //     _icOR.SetActive(false);
-    //     _icAND.SetActive(false);
-    //     _icNOR.SetActive(false);
-    //     _icNOT.SetActive(false);
-    //     _icXOR.SetActive(false);
-    // }
 
     public void OnCategorySelected(int categoryIndex)
     {
