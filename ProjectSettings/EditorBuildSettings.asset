@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/Main Menu.unity
+    path: Assets/Scene/MainMenu/Main Menu.unity
     guid: af130b1a6cb81084cb4c055e0f86cb53
   - enabled: 1
     path: Assets/Scene/AND 1 New.unity
@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/XNOR 3 New.unity
     guid: c93a29cad3b8d9e49982d5f75e0aa1d0
+  - enabled: 1
+    path: Assets/Scene/MainMenu/QUIZ.unity
+    guid: 2be094cc2d6abc744bd05cfca06de85f
   m_configObjects: {}

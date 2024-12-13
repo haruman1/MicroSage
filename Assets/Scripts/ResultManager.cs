@@ -49,6 +49,13 @@ public class ResultManager : MonoBehaviour
     private bool _isLowxHighClear = false;
     private bool _isLowxLowClear = false;
 
+    [Header("Penentuan Bintang")]
+    [SerializeField]
+    private int _Bintang2Detik = 150;
+
+    [SerializeField]
+    private int _Bintang1Detik = 100;
+
     public StageType CurrentStageType => _currentStageType;
 
     public void OnCheckCable(bool isSwitch1On, bool isSwitch2On)
@@ -363,11 +370,11 @@ public class ResultManager : MonoBehaviour
         {
             item.gameObject.SetActive(true);
         }
-        if (_timer.OnReturnTimeLeftValueAfterWin() <= 150)
+        if (_timer.OnReturnTimeLeftValueAfterWin() <= _Bintang2Detik)
         {
             _stars[2].gameObject.SetActive(false);
         }
-        if (_timer.OnReturnTimeLeftValueAfterWin() <= 100)
+        if (_timer.OnReturnTimeLeftValueAfterWin() <= _Bintang1Detik)
         {
             _stars[1].gameObject.SetActive(false);
         }

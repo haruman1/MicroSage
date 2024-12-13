@@ -56,4 +56,5 @@ MonoBehaviour:
     - Salah satu masukan tinggi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: AND 1 -  New
+  targetScene: AND 1 New
+  score: 0
