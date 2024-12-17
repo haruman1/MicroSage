@@ -32,6 +32,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private int _stageID;
 
+    [SerializeField]
+    private TutorialManager _tutorialManager;
+
     void Start()
     {
         //OnLoading();
@@ -50,6 +53,7 @@ public class CanvasManager : MonoBehaviour
 
     public void OnGameplay()
     {
+        _tutorialManager.OnEnable();
         _onResume.Raise();
         _gameUI.SetActive(true);
         _loadingUI.SetActive(false);

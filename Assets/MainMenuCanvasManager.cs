@@ -93,6 +93,7 @@ public class MainMenuCanvasManager : MonoBehaviour
 
         ResetToDefaultValues();
         UpdateScoreUI();
+        Debug.Log("Score has been reset.");
     }
 
     private void UpdateScoreUI()

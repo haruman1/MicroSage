@@ -277,7 +277,10 @@ public class QuizManager : MonoBehaviour
 
             // Ambil indeks pertanyaan terakhir dari PlayerPrefs dan lanjutkan dari sana
             currentQuestionIndex = PlayerPrefs.GetInt("LastQuestion_Index_" + category, 0);
-            if (currentQuestionIndex >= category.questions.Length)
+            Debug.Log(
+                $"Indeks pertanyaan terakhir di progress PlayerPrefs: {currentQuestionIndex}"
+            );
+            if (currentQuestionIndex == category.questions.Length)
             {
                 ShowGameFinishedPanel();
                 if (!string.IsNullOrEmpty(selectedCategory.targetScene))
@@ -294,7 +297,7 @@ public class QuizManager : MonoBehaviour
             {
                 DisplayQuestion();
             }
-            Debug.Log($"Indeks pertanyaan terakhir: {currentQuestionIndex}");
+            // Debug.Log($"Indeks pertanyaan terakhir: {currentQuestionIndex}");
         }
         else
         {
