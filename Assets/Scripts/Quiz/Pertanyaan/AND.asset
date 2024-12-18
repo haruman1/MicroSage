@@ -46,7 +46,7 @@ MonoBehaviour:
     - Mengubah sinyal menjadi bentuk inversi
     - Menjumlahkan nilai logika
     correctReplyIndex: 1
-    QuestionImage: {fileID: 0}
+    QuestionImage: {fileID: 21300000, guid: de714d3761cf1844ea6d9a1b924f187e, type: 3}
   - questionText: 'Gerbang AND pada IC digunakan untuk memastikan keluaran aktif
       hanya jika:'
     replies:
@@ -56,5 +56,5 @@ MonoBehaviour:
     - Salah satu masukan tinggi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: AND 2 New
+  targetScene: AND 1 New
   score: 0

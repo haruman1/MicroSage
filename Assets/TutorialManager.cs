@@ -7,13 +7,17 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] tutorialPages; // Array untuk menyimpan halaman tutorial
     private int currentPageIndex = 0; // Indeks halaman aktif
 
+    [Header("Header dan Tutorial Text")]
+    public string[] headerTexts; // Text untuk header tutorial
+    public string[] tutorialTexts; // Text untuk deskripsi tutorial
+
     [Header("UI NYA")]
-    public TextMeshProUGUI textTutorialPage;
-    public GameObject panelSkipTutorial;
-    public GameObject kontainerPanelTutorial;
-    public Button skipTutorialButton;
-    public Button nextTutorialButton;
-    public GameObject SelesaiTutorial;
+    public TextMeshProUGUI textKontainerTutorial; //textTutorialPage
+    public GameObject triggerSkipTutorial; //panelSkipTutorial
+    public GameObject kontainerTutorial; //kontainerPanelTutorial
+    public Button tidakTriggerButton; //skiptutorialbutton
+    public Button iyaTriggerButton; //nexttutorialbutton
+    public GameObject endTutorial; //SelesaiTutorial
 
     [Header("Object Tutorial")]
     public GameObject[] tutorialObjects; // Array untuk objek tutorial
@@ -26,7 +30,7 @@ public class TutorialManager : MonoBehaviour
     public Button prevButton;
 
     [Header("Pindah tempat")]
-    public RectTransform uiElement;
+    public RectTransform kontainerTutorialUI;
     public Vector2[] positions;
 
     private void Start()
@@ -42,8 +46,8 @@ public class TutorialManager : MonoBehaviour
         UpdatePage();
         nextButton.onClick.AddListener(NextPage);
         prevButton.onClick.AddListener(PrevPage);
-        skipTutorialButton.onClick.AddListener(SkipTutorial);
-        nextTutorialButton.onClick.AddListener(NextTutorial);
+        tidakTriggerButton.onClick.AddListener(SkipTutorial);
+        iyaTriggerButton.onClick.AddListener(NextTutorial);
     }
 
     //
@@ -52,9 +56,9 @@ public class TutorialManager : MonoBehaviour
 
     public void OnEnable()
     {
-        panelSkipTutorial.SetActive(true);
-        SelesaiTutorial.SetActive(false);
-        kontainerPanelTutorial.SetActive(false);
+        triggerSkipTutorial.SetActive(true);
+        endTutorial.SetActive(false);
+        kontainerTutorial.SetActive(false);
     }
 
     private void NextTutorial()
@@ -71,9 +75,9 @@ public class TutorialManager : MonoBehaviour
 
     public void SkipTutorial()
     {
-        panelSkipTutorial.SetActive(false);
-        kontainerPanelTutorial.SetActive(false);
-        SelesaiTutorial.SetActive(false);
+        triggerSkipTutorial.SetActive(false);
+        kontainerTutorial.SetActive(false);
+        endTutorial.SetActive(false);
         // Aktifkan semua tutorialObjects
         foreach (GameObject obj in tutorialObjects)
         {
@@ -86,8 +90,8 @@ public class TutorialManager : MonoBehaviour
     private void UpdatePage()
     {
         Debug.Log("Page aktif: " + currentPageIndex); // Debug
-        kontainerPanelTutorial.SetActive(true);
-        panelSkipTutorial.SetActive(false);
+        kontainerTutorial.SetActive(true);
+        triggerSkipTutorial.SetActive(false);
 
         // Perbarui halaman aktif
         for (int i = 0; i < tutorialPages.Length; i++)
@@ -106,7 +110,7 @@ public class TutorialManager : MonoBehaviour
             SetObjectsForPageIndex(currentPageIndex);
         }
 
-        SelesaiTutorial.SetActive(currentPageIndex == tutorialPages.Length - 1);
+        endTutorial.SetActive(currentPageIndex == tutorialPages.Length - 1);
 
         prevButton.interactable = currentPageIndex > 0;
         nextButton.interactable = currentPageIndex < tutorialPages.Length - 1;
@@ -138,27 +142,38 @@ public class TutorialManager : MonoBehaviour
         if (index >= 0 && index < textTutorial.Length)
         {
             // Mengatur teks header dan deskripsi ke UI yang berbeda
-            textTutorialPage.text = GetHeaderTextForPageIndex(index);
+            textKontainerTutorial.text = GetHeaderTextForPageIndex(index);
             textTutorial[index].text = GetTutorialTextForPageIndex(index);
         }
     }
 
     // Fungsi untuk mendapatkan teks header
+    // private string GetHeaderTextForPageIndex(int index)
+    // {
+    //     // Array untuk header teks
+    //     string[] headerTexts =
+    //     {
+    //         "Generator",
+    //         "Lamp Dioda",
+    //         "Timer",
+    //         "Logic Gate",
+    //         "Kabel Tersisa",
+    //         "Switch Lampu",
+    //         "Positif dan Ground",
+    //     };
+
+    //     // Validasi index agar tidak keluar dari batas array
+    //     if (index >= 0 && index < headerTexts.Length)
+    //     {
+    //         return headerTexts[index];
+    //     }
+    //     else
+    //     {
+    //         return "Header tidak ditemukan.";
+    //     }
+    // }
     private string GetHeaderTextForPageIndex(int index)
     {
-        // Array untuk header teks
-        string[] headerTexts =
-        {
-            "Generator",
-            "Lamp Dioda",
-            "Timer",
-            "Logic Gate",
-            "Kabel Tersisa",
-            "Switch Lampu",
-            "Positif dan Ground",
-        };
-
-        // Validasi index agar tidak keluar dari batas array
         if (index >= 0 && index < headerTexts.Length)
         {
             return headerTexts[index];
@@ -172,19 +187,6 @@ public class TutorialManager : MonoBehaviour
     // Fungsi untuk mendapatkan teks deskripsi tutorial
     private string GetTutorialTextForPageIndex(int index)
     {
-        // Array untuk detail teks tutorial
-        string[] tutorialTexts =
-        {
-            "Generator digunakan untuk menghasilkan energi listrik.",
-            "Lamp Dioda merupakan fungsi utama untuk menyalakan lampu.",
-            "Waktu tersisa untuk menyelesaikan level.",
-            "Logic Gate digunakan untuk mengatur alur logika listrik.",
-            "Jumlah kabel yang tersisa untuk digunakan.",
-            "Switch digunakan untuk menyalakan lampu.",
-            "+ atau positif  digunakan untuk mengalirkan listrik bertengangan positif, - atau ground untuk mengeluarkan tegangan negatif",
-        };
-
-        // Validasi index agar tidak keluar dari batas array
         if (index >= 0 && index < tutorialTexts.Length)
         {
             return tutorialTexts[index];
@@ -194,6 +196,32 @@ public class TutorialManager : MonoBehaviour
             return "Deskripsi tidak ditemukan.";
         }
     }
+
+    // Fungsi untuk mendapatkan teks deskripsi tutorial
+    // private string GetTutorialTextForPageIndex(int index)
+    // {
+    //     // Array untuk detail teks tutorial
+    //     string[] tutorialTexts =
+    //     {
+    //         "Generator digunakan untuk menghasilkan energi listrik.",
+    //         "Lamp Dioda merupakan fungsi utama untuk menyalakan lampu.",
+    //         "Waktu tersisa untuk menyelesaikan level.",
+    //         "Logic Gate digunakan untuk mengatur alur logika listrik.",
+    //         "Jumlah kabel yang tersisa untuk digunakan.",
+    //         "Switch digunakan untuk menyalakan lampu.",
+    //         "+ atau positif  digunakan untuk mengalirkan listrik bertengangan positif, - atau ground untuk mengeluarkan tegangan negatif",
+    //     };
+
+    //     // Validasi index agar tidak keluar dari batas array
+    //     if (index >= 0 && index < tutorialTexts.Length)
+    //     {
+    //         return tutorialTexts[index];
+    //     }
+    //     else
+    //     {
+    //         return "Deskripsi tidak ditemukan.";
+    //     }
+    // }
 
     private void NextPage()
     {
@@ -217,6 +245,6 @@ public class TutorialManager : MonoBehaviour
 
     private void MoveUI(Vector2 targetPosition)
     {
-        uiElement.anchoredPosition = targetPosition;
+        kontainerTutorialUI.anchoredPosition = targetPosition;
     }
 }
