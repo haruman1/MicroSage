@@ -11,7 +11,7 @@ public class SwitchTutorial : MonoBehaviour
     private Tile _referencedTile;
 
     [SerializeField]
-    private Led _led;
+    private LedTutorial _led;
 
     [SerializeField]
     private Field _field;

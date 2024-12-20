@@ -17,7 +17,7 @@ public class TileTutorial : MonoBehaviour
     private GameEventNoParam _onClickColorSFX;
 
     [HideInInspector]
-    public UnityEvent<Tile> onSelected;
+    public UnityEvent<TileTutorial> onSelected;
 
     public bool isSelected
     {
@@ -99,7 +99,7 @@ public class TileTutorial : MonoBehaviour
         var connection = this.transform.Find(NAME_CONNECTION).gameObject;
         connection.SetActive(false);
         connection.transform.eulerAngles = Vector3.zero;
-        Debug.Log("Tile -> Reset(" + _isSolved + "): " + cid);
+        Debug.Log("Tile Tutorial -> Reset(" + _isSolved + "): " + cid);
         _isSolved = false;
     }
 
@@ -122,7 +122,9 @@ public class TileTutorial : MonoBehaviour
 
     public void ConnectionToSide(bool top, bool rigth, bool bottom, bool left)
     {
-        Debug.Log("Tile -> ConnectionToSide: " + top + "|" + rigth + "|" + bottom + "|" + left);
+        Debug.Log(
+            "Tile Tutorial -> ConnectionToSide: " + top + "|" + rigth + "|" + bottom + "|" + left
+        );
         this.transform.Find(NAME_CONNECTION).gameObject.SetActive(true);
         int angle =
             rigth ? -90
@@ -153,8 +155,8 @@ public class TileTutorial : MonoBehaviour
 
     void InvokeOnSelected()
     {
-        Debug.Log("Tile -> InvokeOnSelected(" + cid + ")");
+        Debug.Log("Tile Tutorial -> InvokeOnSelected(" + cid + ")");
         if (onSelected != null)
-            onSelected.Invoke(this.GetComponent<Tile>());
+            onSelected.Invoke(this.GetComponent<TileTutorial>());
     }
 }
