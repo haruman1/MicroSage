@@ -53,7 +53,7 @@ public class CanvasManager : MonoBehaviour
 
     public void OnGameplay()
     {
-        _tutorialManager.OnEnable();
+        // _tutorialManager.OnEnable();
         _onResume.Raise();
         _gameUI.SetActive(true);
         _loadingUI.SetActive(false);

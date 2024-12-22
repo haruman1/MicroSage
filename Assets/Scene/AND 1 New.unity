@@ -6855,7 +6855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3086036629191355554, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
       propertyPath: _isNotGrid
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3086036629191355554, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
       propertyPath: _onClickColorSFX
@@ -13381,7 +13381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1506057433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13394,6 +13394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fef5f0b84909c548b816e63e884d40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialMainManager: {fileID: 0}
   tutorialPages:
   - {fileID: 5186364586955012822}
   - {fileID: 3303094480757161365}
@@ -13423,8 +13424,6 @@ MonoBehaviour:
   textKontainerTutorial: {fileID: 1984650369460191876}
   triggerSkipTutorial: {fileID: 1681233055704126619}
   kontainerTutorial: {fileID: 2050885703801648408}
-  tidakTriggerButton: {fileID: 7950491391065324685}
-  iyaTriggerButton: {fileID: 6970439467869492113}
   endTutorial: {fileID: 7425199416613564333}
   tutorialObjects:
   - {fileID: 1631973754}
@@ -14184,7 +14183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3086036629191355554, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
       propertyPath: _isNotGrid
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3086036629191355554, guid: 9576b1334a328694ba6f2afa80487282, type: 3}
       propertyPath: _onClickColorSFX
@@ -14427,7 +14426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1631973755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19337,17 +19336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6970439467869492113 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2092513788460291710, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
-  m_PrefabInstance: {fileID: 5438461209938616277}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7425199416613564333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8646053222123552136, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
@@ -19435,17 +19423,6 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 469074757}
   m_SourcePrefab: {fileID: 100100000, guid: 023c1c80de5fb6d48b6c0f8c6838ac7d, type: 3}
---- !u!114 &7950491391065324685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5056079858298385572, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}
-  m_PrefabInstance: {fileID: 5438461209938616277}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8239527948420848523 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2217946700679836929, guid: 3ce27bcf34f6bd942ae18ea13e731772, type: 3}

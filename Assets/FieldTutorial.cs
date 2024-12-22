@@ -57,6 +57,27 @@ public class FieldTutorial : MonoBehaviour
         }
     }
 
+    public void AddSolvedConnection(int cid)
+    {
+        if (!_solvedConnections.Contains(cid))
+        {
+            _solvedConnections.Add(cid);
+            Debug.Log($"CID {cid} ditambahkan ke solved connections.");
+        }
+    }
+
+    // Fungsi untuk memeriksa apakah sebuah CID sudah terhubung
+    public bool IsConnectionSolved(int cid)
+    {
+        return _solvedConnections.Contains(cid);
+    }
+
+    // Fungsi untuk mendapatkan daftar solved connections
+    public List<int> GetSolvedConnections()
+    {
+        return new List<int>(_solvedConnections); // Return salinan untuk keamanan
+    }
+
     void OutputGrid()
     {
         var results = "";
@@ -155,6 +176,13 @@ public class FieldTutorial : MonoBehaviour
                     _latestConnections.ForEach((tile) => tile.isSolved = true);
                     _canDrawConnection = false;
                     _amountToSolve.Remove(firstTile.cid);
+
+                    if (!_solvedConnections.Contains(firstTile.cid))
+                    {
+                        _solvedConnections.Add(firstTile.cid);
+                        Debug.Log($"CID {firstTile.cid} added to solved connections.");
+                    }
+
                     SetGameStatus(++_solved, _amountToSolve.Count + _solved);
                     if (_amountToSolve.Keys.Count == 0)
                     {
