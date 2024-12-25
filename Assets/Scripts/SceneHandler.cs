@@ -5,8 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
+    public SelectionsManager _selectionsManager;
+
     //[SerializeField] GameEventNoParam _onNextLevelEvent;
     //[SerializeField] GameEventNoParam _onOnReturnToLevel1Event;
+
+    public void openAnd()
+    {
+        _selectionsManager.OnOpenICAND();
+    }
+
+    public void openOR()
+    {
+        _selectionsManager.OnOpenICOR();
+    }
+
+    public void openNAND()
+    {
+        _selectionsManager.OnOpenICNAND();
+    }
+
+    public void openNOR()
+    {
+        _selectionsManager.OnOpenICNOR();
+    }
+
+    public void openNOT()
+    {
+        _selectionsManager.OnOpenICNOT();
+    }
+
+    public void openXOR()
+    {
+        _selectionsManager.OnOpenICXOR();
+    }
+
+    public void openXNOR()
+    {
+        _selectionsManager.OnOpenICXNOR();
+    }
+
     public void OnNextLevel(int sceneIndex)
     {
         //_onNextLevelEvent.Raise();
