@@ -50,6 +50,7 @@ public class FieldTutorial : MonoBehaviour
     {
         if (tile.cid > Tile.UNPLAYABLE_INDEX)
         {
+            Debug.Log($"Collecting CID: {tile.cid} from tile {tile.name}");
             if (_amountToSolve.ContainsKey(tile.cid))
                 _amountToSolve[tile.cid] += 1;
             else
@@ -62,14 +63,31 @@ public class FieldTutorial : MonoBehaviour
         if (!_solvedConnections.Contains(cid))
         {
             _solvedConnections.Add(cid);
-            Debug.Log($"CID {cid} ditambahkan ke solved connections.");
+            Debug.Log(
+                $"CID {cid} added to solved connections. Current list: {string.Join(", ", _solvedConnections)}"
+            );
         }
     }
 
     // Fungsi untuk memeriksa apakah sebuah CID sudah terhubung
     public bool IsConnectionSolved(int cid)
     {
-        return _solvedConnections.Contains(cid);
+        bool result = _solvedConnections.Contains(cid);
+        Debug.Log(
+            $"IsConnectionSolved: CID {cid} -> {result}. Solved connections: {string.Join(", ", _solvedConnections)}"
+        );
+        return result;
+    }
+
+    public bool IsSolved(int currentSolved)
+    {
+        Debug.Log(
+            $"IsSolved: {_solvedConnections.Count} == {_amountToSolve.Count}. Solved connections: {string.Join(", ", _solvedConnections)}"
+        );
+        if (_solvedConnections.Count == currentSolved)
+            return true;
+        else
+            return false; // Tidak terhubung
     }
 
     // Fungsi untuk mendapatkan daftar solved connections
@@ -195,7 +213,9 @@ public class FieldTutorial : MonoBehaviour
 
     bool CheckIfTilesMatch(TileTutorial tile, TileTutorial another)
     {
-        return tile.cid > 0 && another.cid == tile.cid;
+        bool result = tile.cid > 0 && another.cid == tile.cid;
+        Debug.Log($"CheckIfTilesMatch: {tile.cid} == {another.cid} -> {result}");
+        return result;
     }
 
     bool CheckMouseOutsideGrid()

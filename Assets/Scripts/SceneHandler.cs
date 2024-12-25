@@ -28,7 +28,7 @@ public class SceneHandler : MonoBehaviour
         Time.timeScale = 1;
         //if(BGM.instance != null) BGM.instance.DestroyBGMGameObject();
         //_playerData.ResetData();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 
     public void OnQuit()

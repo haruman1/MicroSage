@@ -77,7 +77,14 @@ public class LoadingScreen : MonoBehaviour
         loadingBarImage.fillAmount = targetFill;
 
         Debug.Log("Scene siap diaktifkan...");
-        operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
+        if (PlayerPrefs.HasKey("TutorialSelesai"))
+        {
+            loadSceneLangsung(sceneIndex);
+        }
+        else
+        {
+            operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
+        }
     }
 
     public void OnStageCompleted(int stageID)

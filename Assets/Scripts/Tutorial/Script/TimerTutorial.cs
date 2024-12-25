@@ -44,7 +44,7 @@ public class TimerTutorial : MonoBehaviour
         return Mathf.FloorToInt(_countdownTime);
     }
 
-    void Update()
+    public void Update()
     {
         if (stopTimer)
             return;

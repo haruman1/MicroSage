@@ -6,14 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/MainMenu/Main Menu.unity
+    path: Assets/Scene/MainMenu/MainMenu.unity
+    guid: 1232a4d44e2223c44b2ba44effc16db8
+  - enabled: 1
+    path: Assets/Scene/MainMenu/Selections.unity
+    guid: f387bea729e83fd4d88dc2edb05ce831
+  - enabled: 1
+    path: Assets/Scene/MainMenu/SimulasiSelect.unity
+    guid: b279a19f9b4bc894c845cf12385aef69
+  - enabled: 1
+    path: Assets/Scene/MainMenu/QuizSelections.unity
     guid: af130b1a6cb81084cb4c055e0f86cb53
+  - enabled: 1
+    path: Assets/Scene/TutorialNew.unity
+    guid: 7426ab15e71b6a0488b813a5fdec54b1
   - enabled: 1
     path: Assets/Scene/AND 1 New.unity
     guid: bc5858f6126af674cbbf78ed7f5a510b
-  - enabled: 0
-    path: Assets/Scene/Tutorial.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scene/AND 2 New.unity
     guid: 2630a332345882b468cc4e6ffc40480a
@@ -38,6 +47,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/NOT 3 New.unity
     guid: 6327f59d46ac9164590ccce5212d337b
+  - enabled: 1
+    path: Assets/Scene/NAND 1 New.unity
+    guid: 5db04e579374b164eb503aa9fe4e4b8c
+  - enabled: 1
+    path: Assets/Scene/NAND 2 New.unity
+    guid: ab93bc96bcf63c646b859d681d5036c1
+  - enabled: 1
+    path: Assets/Scene/NAND 3  New.unity
+    guid: 2114664ac57915a4aa2790caa8655d27
   - enabled: 1
     path: Assets/Scene/NOR 1 New.unity
     guid: 715d9679a871228408de2c1e1b16345c
@@ -65,16 +83,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/XNOR 3 New.unity
     guid: c93a29cad3b8d9e49982d5f75e0aa1d0
-  - enabled: 1
-    path: Assets/Scene/MainMenu/QUIZ.unity
-    guid: 2be094cc2d6abc744bd05cfca06de85f
-  - enabled: 1
-    path: Assets/Scene/NAND 1 New.unity
-    guid: 5db04e579374b164eb503aa9fe4e4b8c
-  - enabled: 1
-    path: Assets/Scene/NAND 2 New.unity
-    guid: ab93bc96bcf63c646b859d681d5036c1
-  - enabled: 1
-    path: Assets/Scene/NAND 3  New.unity
-    guid: 2114664ac57915a4aa2790caa8655d27
   m_configObjects: {}
