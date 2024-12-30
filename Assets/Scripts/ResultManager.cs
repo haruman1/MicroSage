@@ -15,6 +15,13 @@ public enum StageType
     XNOR,
 }
 
+public enum TypeIC
+{
+    TTL,
+    CMOS,
+    HCMOS,
+}
+
 public class ResultManager : MonoBehaviour
 {
     [SerializeField]
@@ -23,8 +30,10 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> _stars = new();
 
+    // [SerializeField]
+    // private TextMeshProUGUI _timerWinUIText;
     [SerializeField]
-    private TextMeshProUGUI _timerWinUIText;
+    private BintangData bintangData;
 
     [SerializeField]
     private TextMeshProUGUI _cableLeftText;
@@ -44,6 +53,9 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     private StageType _currentStageType;
 
+    [SerializeField]
+    private TypeIC _typeIC;
+
     private bool _isHighxHighClear = false;
     private bool _isHighxLowClear = false;
     private bool _isLowxHighClear = false;
@@ -57,6 +69,8 @@ public class ResultManager : MonoBehaviour
     private int _Bintang1Detik = 100;
 
     public StageType CurrentStageType => _currentStageType;
+    public TypeIC CurrentTypeIc => _typeIC;
+    private bool[] _clearStates = new bool[4]; // Array untuk menyimpan status clear
 
     public void OnCheckCable(bool isSwitch1On, bool isSwitch2On)
     {
@@ -69,7 +83,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -80,7 +94,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -91,7 +105,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -102,7 +116,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -115,7 +129,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -126,7 +140,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -137,7 +151,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -148,7 +162,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -162,7 +176,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -173,7 +187,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -185,7 +199,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -196,7 +210,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -207,7 +221,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -218,7 +232,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -230,7 +244,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -241,7 +255,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -252,7 +266,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -263,7 +277,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -275,7 +289,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -286,7 +300,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -297,7 +311,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -308,7 +322,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -320,7 +334,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -331,7 +345,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isHighxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -342,7 +356,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxHighClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOffLED.Raise();
                 }
@@ -353,7 +367,7 @@ public class ResultManager : MonoBehaviour
                     {
                         _isLowxLowClear = true;
                         _switchPatternToWin--;
-                        _cableLeftText.SetText("Cable Left: " + _switchPatternToWin.ToString());
+                        _cableLeftText.SetText("Tugas Utama : " + _switchPatternToWin.ToString());
                     }
                     _onTurnOnLED.Raise();
                 }
@@ -365,18 +379,46 @@ public class ResultManager : MonoBehaviour
 
     public void OnWin()
     {
-        _timerWinUIText.SetText(_timer.OnReturnTimeLeftValueAfterWin().ToString() + " Detik");
-        foreach (var item in _stars)
+        // Menampilkan semua bintang
+        foreach (var star in _stars)
         {
-            item.gameObject.SetActive(true);
+            star.SetActive(true);
         }
+
+        // Menyimpan nilai berdasarkan waktu yang tersisa
+        int playerScore = CalculatePlayerScore();
+        PlayerPrefs.SetInt($"PlayerNilai_{_currentStageType}_{_typeIC}", playerScore);
+        Debug.Log(
+            $"Nilai disimpan: {playerScore} untuk StageType: {_currentStageType}, TypeIC: {_typeIC}"
+        );
+
+        // Simpan nilai bintang ke ScriptableObject
+        bintangData.nilaiBintang[(_currentStageType, _typeIC)] = playerScore;
+
+        // Simpan data bintang ke PlayerPrefs
+        bintangData.SaveData();
+
+        // Log untuk memastikan nilai bintang disimpan
+        Debug.Log(
+            $"Nilai bintang disimpan: {playerScore} untuk StageType: {_currentStageType}, TypeIC: {_typeIC}"
+        );
+    }
+
+    private int CalculatePlayerScore()
+    {
+        int playerScore = 3; // Nilai maksimum
+
         if (_timer.OnReturnTimeLeftValueAfterWin() <= _Bintang2Detik)
         {
-            _stars[2].gameObject.SetActive(false);
+            _stars[2].SetActive(false);
+            playerScore = 2; // Nilai untuk 2 bintang
         }
         if (_timer.OnReturnTimeLeftValueAfterWin() <= _Bintang1Detik)
         {
-            _stars[1].gameObject.SetActive(false);
+            _stars[1].SetActive(false);
+            playerScore = 1; // Nilai untuk 1 bintang
         }
+
+        return playerScore;
     }
 }

@@ -12,6 +12,9 @@ public class SelectionsManager : MonoBehaviour
 
     [Header("Pilih Leaderboard")]
     public GameObject _leaderboardQuiz;
+    public LeaderboardQuiz leaderboardQuiz;
+
+    public LeaderboardSimulasi leaderboardSimulasi;
     public GameObject _leaderboardSimulasi;
 
     [Header("Loading Screen")]
@@ -26,12 +29,76 @@ public class SelectionsManager : MonoBehaviour
     public int quizIndex = 0;
 
     // Start is called before the first frame update
+    // void Awake()
+    // {
+    //     if (PlayerPrefs.HasKey("MenuIndex"))
+    //     {
+    //         PlayerPrefs.DeleteKey("MenuIndex");
+    //     }
+    // }
+
     void Start()
     {
-        OnOpenStageSelection();
+        if (PlayerPrefs.HasKey("MenuIndex"))
+        {
+            SelectMenuSimulasi();
+            PlayerPrefs.DeleteKey("MenuIndex");
+        }
+        else if (PlayerPrefs.HasKey("QuizMenu"))
+        {
+            onOpenQuizSelection();
+            PlayerPrefs.DeleteKey("QuizMenu");
+        }
+        else
+        {
+            OnOpenStageSelection();
+        }
     }
 
     //Simulasi Management
+
+    public void SelectMenuSimulasi()
+    {
+        int menuIndex = PlayerPrefs.GetInt("MenuIndex");
+
+        switch (menuIndex)
+        {
+            case 0:
+                Debug.Log("IC AND");
+                OnOpenICAND();
+                break;
+            case 1:
+                Debug.Log("IC OR");
+                OnOpenICOR();
+                break;
+            case 2:
+                Debug.Log("IC NAND");
+                OnOpenICNAND();
+                break;
+            case 3:
+                Debug.Log("IC XOR");
+                OnOpenICXOR();
+                break;
+            case 4:
+                Debug.Log("IC NOR");
+                OnOpenICNOR();
+                break;
+            case 5:
+                Debug.Log("IC XNOR");
+                OnOpenICXNOR();
+                break;
+            case 6:
+                Debug.Log("IC NOT");
+                OnOpenICNOT();
+                break;
+            default:
+                Debug.Log("Open Selections");
+                OnOpenStageSelection();
+                break;
+        }
+        PlayerPrefs.DeleteKey("MenuIndex");
+        PlayerPrefs.Save();
+    }
 
     public void OnOpenICAND()
     {
@@ -40,6 +107,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[0].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -56,6 +124,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[1].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -72,6 +141,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[2].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -88,6 +158,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[3].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -104,6 +175,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[4].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -120,6 +192,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[5].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -136,6 +209,7 @@ public class SelectionsManager : MonoBehaviour
         {
             _stageSelectionUI[i].SetActive(false);
         }
+        _quizselections.SetActive(false);
         _simulasiContainer.SetActive(true);
         _stageSelectionUI[6].SetActive(true);
         _leaderboardSimulasi.SetActive(false);
@@ -174,7 +248,7 @@ public class SelectionsManager : MonoBehaviour
     {
         string[] categories = { "AND", "OR", "NAND", "NOR", "NOT", "XOR", "XNOR" };
         // KALAU MAU DI KATEGORIKAN
-        // string[] stage = { "TTL", "CMOS", "HCMOS" };
+        string[] stage = { "TTL", "CMOS", "HCMOS" };
         foreach (string name in categories)
         {
             PlayerPrefs.SetInt("Score_Simulations_" + name, 0);
@@ -187,7 +261,23 @@ public class SelectionsManager : MonoBehaviour
         foreach (string name in categories)
         {
             PlayerPrefs.SetInt("Score_Quiz_" + name, 0);
+            PlayerPrefs.SetInt("LastQuestion_Index_" + name, 0);
+            PlayerPrefs.SetInt("CorrectReplies_" + name, 0);
+            PlayerPrefs.SetInt("WrongReplies_" + name, 0);
         }
+        UpdateScoreUIQuiz();
+    }
+
+    private void UpdateScoreUIQuiz()
+    {
+        Debug.Log("Update Score Quiz");
+        leaderboardQuiz.SetLeaderboardStatus();
+    }
+
+    private void UpdateScoreSimulasi()
+    {
+        Debug.Log("Update Score Simulasi");
+        leaderboardSimulasi.SetLeaderboardStatus();
     }
 
     // Update is called once per frame
@@ -228,8 +318,10 @@ public class SelectionsManager : MonoBehaviour
     {
         _stageSelections.SetActive(true);
         _quizselections.SetActive(false);
-        _loadingScreen.SetActive(false);
         _simulasiSelections.SetActive(false);
+        _loadingScreen.SetActive(false);
+        _leaderboardSimulasi.SetActive(false);
+        _leaderboardQuiz.SetActive(false);
         _simulasiContainer.SetActive(false);
     }
 
@@ -241,5 +333,10 @@ public class SelectionsManager : MonoBehaviour
     public void OnQuizSelected(int quizIndex)
     {
         PlayerPrefs.SetInt("SelectedCategory", quizIndex);
+    }
+
+    public void OnMenuQuizSelected(int menuIndex)
+    {
+        PlayerPrefs.SetInt("QuizMenu", menuIndex);
     }
 }

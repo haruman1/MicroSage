@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBarImage: {fileID: 1363699983838189831}
+  _loadingUI: {fileID: 8478047834037714990}
   fillDuration: 10
   targetFill: 1
   delay: 2

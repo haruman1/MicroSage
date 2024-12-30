@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LeaderboarSimulasi : MonoBehaviour
+public class LeaderboardSimulasi : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _and;
@@ -25,6 +25,9 @@ public class LeaderboarSimulasi : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI _xnor;
+
+    [SerializeField]
+    private List<GameObject> _stars = new();
 
     // Start is called before the first frame update
     void Start()

@@ -55,5 +55,50 @@ MonoBehaviour:
     - Tidak terdefinisi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  targetScene: AND 3 - New
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
+      sesuai?
+    replies:
+    - 0
+    - 1
+    - 2
+    - Tidak terdefinisi
+    correctReplyIndex: 1
+    QuestionImage: {fileID: 0}
+  targetScene: 0
   score: 0

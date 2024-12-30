@@ -45,12 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c958961d7b5929419b75d87f119fb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadingUI: {fileID: 0}
   _gameUI: {fileID: 0}
   _winPopUp: {fileID: 0}
   _losePopUp: {fileID: 0}
   _settingPopUp: {fileID: 0}
   _onPause: {fileID: 11400000, guid: f15d2bcc59e837a4ab9a1f6a948488c7, type: 2}
   _onResume: {fileID: 11400000, guid: 577a2a0fe3835ba41b82b90fe2a89fbc, type: 2}
+  _stagePlayerPrefs: 
+  _stageID: 0
+  _tutorialManager: {fileID: 0}
+  _animasiManager: {fileID: 0}
 --- !u!114 &4578300926861527388
 MonoBehaviour:
   m_ObjectHideFlags: 0

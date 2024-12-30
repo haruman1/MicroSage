@@ -18690,6 +18690,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 143359445}
     - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: _typeIC
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
+      propertyPath: bintangData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f140598f3ea4a443ad7abdb893548dd, type: 2}
+    - target: {fileID: 699052924854618936, guid: da9a2ba0f7cd95d4ba5e8c8627564ec5, type: 3}
       propertyPath: _onTurnOnLED
       value: 
       objectReference: {fileID: 11400000, guid: a3caac27e25b223499388547a2c570ca, type: 2}

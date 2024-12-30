@@ -83,4 +83,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/NOR 2 New.unity
     guid: 0446cb66a5431da4ab6cd13fd2ab6c61
+  - enabled: 1
+    path: Assets/Scene/MainMenu/QUIZ.unity
+    guid: 2be094cc2d6abc744bd05cfca06de85f
   m_configObjects: {}

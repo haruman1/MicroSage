@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public QuestionData selectedCategoryData;
 
-    public const string ScoreKey = "Score_Category_";
+    public const string ScoreKey = "Score_Quiz_";
 
     void Start()
     {
@@ -37,30 +37,35 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public int GetScore(string nameQuiz)
+    {
+        return selectedCategoryData.score;
+    }
+
     void UpdateScoreText()
     {
         scoreText.text = "" + score.ToString();
     }
 
-    public void SaveScore(string nameCategory)
+    public void SaveScore(string nameQuiz)
     {
-        PlayerPrefs.SetInt(ScoreKey + nameCategory, score);
-
+        PlayerPrefs.SetInt(ScoreKey + nameQuiz, score);
+        selectedCategoryData.score = score;
         PlayerPrefs.Save();
-        Debug.Log("Score for " + nameCategory + " has been saved.");
+        Debug.Log("Score for " + nameQuiz + " has been saved.");
     }
 
-    public void LoadScore(string nameCategory)
+    public void LoadScore(string nameQuiz)
     {
-        if (PlayerPrefs.HasKey(ScoreKey + nameCategory))
+        if (PlayerPrefs.HasKey(ScoreKey + nameQuiz))
         {
-            score = PlayerPrefs.GetInt(ScoreKey + nameCategory);
+            score = PlayerPrefs.GetInt(ScoreKey + nameQuiz);
             UpdateScoreText();
-            Debug.Log("Score for " + nameCategory + " has been loaded.");
+            Debug.Log("Score for " + nameQuiz + " has been loaded.");
         }
         else
         {
-            Debug.LogWarning("Score for " + nameCategory + " not found. Setting score to 0.");
+            Debug.LogWarning("Score for " + nameQuiz + " not found. Setting score to 0.");
             score = 0;
             UpdateScoreText();
         }
@@ -68,8 +73,19 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
-        PlayerPrefs.DeleteKey(ScoreKey);
+        Debug.Log("Resetting score for " + selectedCategoryData.category);
+        string fullKey = ScoreKey + selectedCategoryData.category;
+
+        if (PlayerPrefs.HasKey(fullKey))
+        {
+            PlayerPrefs.DeleteKey(fullKey);
+        }
+
         score = 0;
+        selectedCategoryData.score = 0;
+        PlayerPrefs.Save();
         UpdateScoreText();
+
+        Debug.Log("Score reset successfully for " + selectedCategoryData.category);
     }
 }
