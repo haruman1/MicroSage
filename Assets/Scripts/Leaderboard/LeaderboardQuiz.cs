@@ -46,7 +46,7 @@ public class LeaderboardQuiz : MonoBehaviour
     private void SetLeaderboardText(TextMeshProUGUI text, string key)
     {
         int score = PlayerPrefs.GetInt(key, 0);
-        PlayerPrefs.DeleteAll();
+
         text.text = score > 0 ? score.ToString() : "0";
     }
 }

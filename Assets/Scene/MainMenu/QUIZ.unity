@@ -5276,7 +5276,7 @@ MonoBehaviour:
   - {fileID: 598472963}
   scoreManager: {fileID: 665991319}
   correctReplyScore: 10
-  wrongReplyScore: 5
+  wrongReplyScore: 0
   gameFinishedPanel: {fileID: 469773290}
   BenarSalahText: {fileID: 1743415666}
   totalScoreText: {fileID: 1867670808}

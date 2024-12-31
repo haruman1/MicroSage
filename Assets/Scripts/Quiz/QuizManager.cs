@@ -76,6 +76,14 @@ public class QuizManager : MonoBehaviour
         {
             ResetCategoryScore();
         }
+        else
+        {
+            if (currentQuestionIndex >= selectedCategory.questions.Length)
+            {
+                ShowGameFinishedPanel();
+                return;
+            }
+        }
 
         ResetButtonColors(); // Reset warna tombol jika diperlukan
 
@@ -133,6 +141,7 @@ public class QuizManager : MonoBehaviour
             Debug.LogError("Kategori atau pertanyaan belum diatur.");
             return;
         }
+
         // Periksa apakah jawaban benar
         if (replyIndex == selectedCategory.questions[currentQuestionIndex].correctReplyIndex)
         {
@@ -145,7 +154,11 @@ public class QuizManager : MonoBehaviour
         else
         {
             wrongReplies++;
-            scoreManager.SubtractScore(wrongReplyScore);
+            // Pastikan skor tidak dikurangi jika sudah 0
+            if (scoreManager.GetScore(selectedCategory.category) > 0)
+            {
+                scoreManager.SubtractScore(wrongReplyScore);
+            }
             SaveProgress();
 
             Debug.Log("Incorrect!");
@@ -154,6 +167,7 @@ public class QuizManager : MonoBehaviour
         // Perbarui indeks pertanyaan
         currentQuestionIndex++;
         SaveProgress();
+
         // Cek apakah sudah selesai atau tampilkan pertanyaan berikutnya
         if (currentQuestionIndex < selectedCategory.questions.Length)
         {
@@ -195,37 +209,35 @@ public class QuizManager : MonoBehaviour
     public void ShowGameFinishedPanel()
     {
         gameFinishedPanel.SetActive(true);
-        var scoreAkhir =
-            PlayerPrefs.GetInt("CorrectReplies_" + selectedCategory.category, correctReplies)
-            - PlayerPrefs.GetInt("WrongReplies_" + selectedCategory.category, wrongReplies);
-        BenarSalahText.text =
-            "" + scoreAkhir.ToString() + " / " + selectedCategory.questions.Length;
-        totalScoreText.text = scoreManager.GetScore(selectedCategory.score.ToString()).ToString();
+
+        // Hitung skor akhir berdasarkan correctReplies dan wrongReplies yang sudah diperbarui
+        var scoreAkhir = correctReplies - wrongReplies;
+
+        // Pastikan skor akhir tidak kurang dari 0
+        scoreAkhir = Mathf.Max(scoreAkhir, 0);
+
+        // Tampilkan skor akhir dan total pertanyaan
+        BenarSalahText.text = scoreAkhir.ToString() + " / " + selectedCategory.questions.Length;
+
+        // Ambil skor dari ScoreManager
+        int totalScore = scoreManager.GetScore(selectedCategory.category);
+        totalScoreText.text = totalScore.ToString();
     }
 
     public void SaveProgress()
     {
-        PlayerPrefs.SetInt(
-            "CorrectReplies_" + scoreManager.selectedCategoryData.category,
-            correctReplies
-        );
-        PlayerPrefs.SetInt(
-            "LastQuestion_Index_" + scoreManager.selectedCategoryData.category,
-            currentQuestionIndex
-        );
-        PlayerPrefs.SetInt(
-            "WrongReplies_" + scoreManager.selectedCategoryData.category,
-            wrongReplies
-        );
+        PlayerPrefs.SetInt("CorrectReplies_" + selectedCategory.category, correctReplies);
+        PlayerPrefs.SetInt("LastQuestion_Index_" + selectedCategory.category, currentQuestionIndex);
+        PlayerPrefs.SetInt("WrongReplies_" + selectedCategory.category, wrongReplies);
         PlayerPrefs.Save();
         Debug.Log("Progress saved");
-        correctRepliesText.text = PlayerPrefs
-            .GetInt("CorrectReplies_" + selectedCategory.category)
-            .ToString();
-        wrongRepliesText.text = PlayerPrefs
-            .GetInt("WrongReplies_" + selectedCategory.category)
-            .ToString();
-        scoreManager.SaveScore(scoreManager.selectedCategoryData.category);
+
+        // Update tampilan teks jawaban benar dan salah
+        correctRepliesText.text = correctReplies.ToString();
+        wrongRepliesText.text = wrongReplies.ToString();
+
+        // Simpan skor ke ScoreManager
+        scoreManager.SaveScore(selectedCategory.category);
     }
 
     public void LoadProgress(string categoryName)
