@@ -1,3 +1,4 @@
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour
 {
     public TutorialMainManager tutorialMainManager;
+    public LoadingScreen loadingScreen;
     public TimerTutorial timerTutorial;
     public FieldTutorial fieldTutorial;
     public GameObject[] tutorialPages; // Array untuk menyimpan halaman tutorial
@@ -39,13 +41,11 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Tujuan selesai scene")]
     public int sceneIndex;
+    private string filePath;
 
-    private void Awake()
+    public void Awake()
     {
-        if (PlayerPrefs.HasKey("TutorialSelesai"))
-        {
-            SceneManager.LoadScene(sceneIndex);
-        }
+        PernahTutorial();
     }
 
     public void Start()
@@ -58,7 +58,24 @@ public class TutorialManager : MonoBehaviour
 
     //
 
+    public void PernahTutorial()
+    {
+        filePath = Path.Combine(Application.persistentDataPath, "visited.txt");
 
+        if (File.Exists(filePath))
+        {
+            Debug.Log("Aplikasi sudah pernah dibuka.");
+            // Lakukan sesuatu untuk pengguna lama
+            loadingScreen.Start();
+            loadingScreen.LoadScene(sceneIndex);
+        }
+        else
+        {
+            Debug.Log("Aplikasi belum pernah dibuka.");
+            File.WriteAllText(filePath, "visited");
+            // Lakukan sesuatu untuk pengguna baru
+        }
+    }
 
     public void OnEnable()
     {
@@ -236,16 +253,6 @@ public class TutorialManager : MonoBehaviour
             {
                 tutorialObjects[i].SetActive(false); // Nonaktifkan jika indeks tidak sesuai
             }
-        }
-    }
-
-    public void PernahTutorial()
-    {
-        if (!PlayerPrefs.HasKey("TutorialSelesai"))
-        {
-            Debug.Log("Tutorial selesai bernilai ." + PlayerPrefs.GetInt("TutorialSelesai"));
-            PlayerPrefs.SetInt("TutorialSelesai", 1);
-            SceneManager.LoadScene(sceneIndex);
         }
     }
 

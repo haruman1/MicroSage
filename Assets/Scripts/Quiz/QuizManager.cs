@@ -64,62 +64,6 @@ public class QuizManager : MonoBehaviour
         DisplayQuestion();
     }
 
-    // public void DisplayQuestion()
-    // {
-    //     if (selectedCategory.score >= 50)
-    //     {
-    //         PeringatanPanel.SetActive(true);
-    //         PeringatanText.text = selectedCategory.category.ToString();
-    //         PlayerPrefs.SetInt("CorrectReplies_" + selectedCategory.category, 0);
-    //         PlayerPrefs.SetInt("WrongReplies_" + selectedCategory.category, 0);
-    //         PlayerPrefs.SetInt("LastQuestion_Index_" + selectedCategory.category, 0);
-    //         PlayerPrefs.Save();
-    //         Debug.Log("Score sudah di reset dari awal");
-    //     }
-    //     if (selectedCategory == null)
-    //     {
-    //         Debug.LogError("No category selected");
-    //         return;
-    //     }
-
-    //     ResetButtonColors(); // Reset warna tombol jika diperlukan
-
-    //     // Ambil pertanyaan berdasarkan indeks
-    //     var question = selectedCategory.questions[currentQuestionIndex];
-
-    //     // Tampilkan teks pertanyaan
-    //     questionText.text = question.questionText;
-
-    //     // Tampilkan gambar pertanyaan jika ada
-    //     if (question.QuestionImage != null)
-    //     {
-    //         questionImage.sprite = question.QuestionImage;
-    //     }
-
-    //     // Validasi jumlah tombol yang sesuai dengan jumlah jawaban
-    //     int totalReplies = question.replies.Length;
-    //     for (int i = 0; i < replyButtons.Length; i++)
-    //     {
-    //         if (i < totalReplies)
-    //         {
-    //             // Jika tombol diperlukan, pastikan tombol aktif dan terhubung dengan jawaban
-    //             replyButtons[i].gameObject.SetActive(true);
-    //             TextMeshProUGUI buttonText = replyButtons[i]
-    //                 .GetComponentInChildren<TextMeshProUGUI>();
-    //             buttonText.text = question.replies[i];
-
-    //             // Mendaftarkan event listener hanya jika belum ada
-    //             int replyIndex = i;
-    //             replyButtons[i].onClick.RemoveAllListeners();
-    //             replyButtons[i].onClick.AddListener(() => OnReplySelected(replyIndex));
-    //         }
-    //         else
-    //         {
-    //             // Sembunyikan tombol jika tidak diperlukan
-    //             replyButtons[i].gameObject.SetActive(false);
-    //         }
-    //     }
-    // }
     public void DisplayQuestion()
     {
         if (selectedCategory == null)

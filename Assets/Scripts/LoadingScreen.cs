@@ -19,7 +19,7 @@ public class LoadingScreen : MonoBehaviour
 
     public void Start()
     {
-        _loadingUI.SetActive(true);
+        // _loadingUI.SetActive(true);
         loadingBarImage.fillAmount = 0f;
         buttonSkip.SetActive(false); // Pastikan buttonSkip disembunyikan saat awal
     }
@@ -79,14 +79,8 @@ public class LoadingScreen : MonoBehaviour
         loadingBarImage.fillAmount = targetFill;
 
         Debug.Log("Scene siap diaktifkan...");
-        if (PlayerPrefs.HasKey("TutorialSelesai"))
-        {
-            loadSceneLangsung(sceneIndex);
-        }
-        else
-        {
-            operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
-        }
+
+        operation.allowSceneActivation = true; // Aktifkan scene setelah loading selesai
     }
 
     public void OnStageCompleted(int stageID)

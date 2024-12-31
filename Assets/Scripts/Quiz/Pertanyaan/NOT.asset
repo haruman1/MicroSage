@@ -55,50 +55,46 @@ MonoBehaviour:
     - Tidak terdefinisi
     correctReplyIndex: 1
     QuestionImage: {fileID: 0}
-  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
-      sesuai?
+  - questionText: 'Simbol gerbang NOT dalam diagram logika biasanya ditampilkan dengan:'
     replies:
-    - 0
-    - 1
-    - 2
-    - Tidak terdefinisi
-    correctReplyIndex: 1
+    - Segitiga dengan lingkaran di ujung
+    - Setengah lingkaran dengan titik
+    - Persegi panjang dengan dua input
+    - Lingkaran dengan tanda plus
+    correctReplyIndex: 0
     QuestionImage: {fileID: 0}
-  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
-      sesuai?
+  - questionText: Dalam rangkaian digital, gerbang NOT digunakan untuk
     replies:
-    - 0
-    - 1
-    - 2
-    - Tidak terdefinisi
-    correctReplyIndex: 1
+    - Menggabungkan dua sinyal
+    - Membandingkan dua sinyal
+    - Membalikkan level logika sinyal
+    - Menyimpan data
+    correctReplyIndex: 2
     QuestionImage: {fileID: 0}
-  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
-      sesuai?
+  - questionText: Jika input A = 1, output gerbang NOT adalah
     replies:
     - 0
     - 1
-    - 2
-    - Tidak terdefinisi
-    correctReplyIndex: 1
+    - Tidak dapat ditentukan
+    - Tergantung kondisi lain
+    correctReplyIndex: 0
     QuestionImage: {fileID: 0}
-  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
-      sesuai?
+  - questionText: Gerbang NOT sering digunakan dalam rangkaian logika untuk
     replies:
-    - 0
-    - 1
-    - 2
-    - Tidak terdefinisi
-    correctReplyIndex: 1
+    - Menggabungkan sinyal
+    - Menyimpan data
+    - Menginversi sinyal
+    - Menguatkan sinyal
+    correctReplyIndex: 2
     QuestionImage: {fileID: 0}
-  - questionText: Jika IC 7404 menerima input A = 0, berapakah output pada pin yang
-      sesuai?
+  - questionText: 'Dalam tabel kebenaran gerbang NOT, jika input adalah 1, maka outputnya
+      adalah:'
     replies:
     - 0
     - 1
-    - 2
+    - Tidak dapat ditentukan
     - Tidak terdefinisi
-    correctReplyIndex: 1
+    correctReplyIndex: 0
     QuestionImage: {fileID: 0}
   targetScene: 0
   score: 0
