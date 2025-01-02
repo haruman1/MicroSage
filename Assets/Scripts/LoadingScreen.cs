@@ -25,6 +25,23 @@ public class LoadingScreen : MonoBehaviour
         buttonSkip.SetActive(false); // Pastikan buttonSkip disembunyikan saat awal
     }
 
+    public void ResetTutorial()
+    {
+        filePath = Path.Combine(Application.persistentDataPath, "visited.txt");
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath); // Menghapus file "visited.txt"
+            Debug.Log("File 'visited.txt' berhasil dihapus. Status aplikasi direset.");
+            LoadScene(4); // Load scene tutorial
+        }
+        else
+        {
+            Debug.Log("File 'visited.txt' tidak ditemukan. Tidak ada yang perlu dihapus.");
+            LoadScene(1);
+        }
+    }
+
     public void Awalan()
     {
         _loadingUI.SetActive(true);
@@ -38,6 +55,7 @@ public class LoadingScreen : MonoBehaviour
         }
         else
         {
+            Debug.Log("Tutorial belum pernah dibuka.");
             LoadScene(4);
         }
     }
