@@ -1492,7 +1492,7 @@ MonoBehaviour:
   _timerText: {fileID: 143359443}
   _onGameOver: {fileID: 11400000, guid: fb1feea05d4847a45bc314565102bb6a, type: 2}
   stopTimer: 1
-  _countdownTime: 20
+  _countdownTime: 300
 --- !u!114 &143359446
 MonoBehaviour:
   m_ObjectHideFlags: 0

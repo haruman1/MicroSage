@@ -1492,7 +1492,7 @@ MonoBehaviour:
   _timerText: {fileID: 143359443}
   _onGameOver: {fileID: 11400000, guid: fb1feea05d4847a45bc314565102bb6a, type: 2}
   stopTimer: 1
-  _countdownTime: 10
+  _countdownTime: 300
 --- !u!114 &143359446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13771,7 +13771,7 @@ PrefabInstance:
       objectReference: {fileID: 1665415435}
     - target: {fileID: 785983379293012598, guid: 2e2ccbb2a3863134ca3209028e91c46c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMasukGame
+      value: OnGameplay
       objectReference: {fileID: 0}
     - target: {fileID: 1653600831228152831, guid: 2e2ccbb2a3863134ca3209028e91c46c, type: 3}
       propertyPath: m_AnchorMax.y
