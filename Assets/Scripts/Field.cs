@@ -99,7 +99,11 @@ public class Field : MonoBehaviour
             if (
                 hoverTile.isHighlighted
                 || hoverTile.isSolved
-                || (isDifferentActiveTile && !hoverTile.IsFromGenerator)
+                || (
+                    isDifferentActiveTile
+                    && !hoverTile.IsFromGenerator
+                    && hoverTile.cid != firstTile.cid
+                )
                 || hoverTile.IsNotGrid
             )
                 return;
@@ -164,7 +168,9 @@ public class Field : MonoBehaviour
 
     bool CheckIfTilesMatch(Tile tile, Tile another)
     {
-        return tile.cid > 0 && another.cid == tile.cid && !tile.IsFromGenerator;
+        return tile.cid > 0
+            && another.cid == tile.cid
+            && (!tile.IsFromGenerator || another.IsFromGenerator);
     }
 
     bool CheckMouseOutsideGrid()
