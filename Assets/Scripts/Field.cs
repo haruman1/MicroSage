@@ -99,11 +99,7 @@ public class Field : MonoBehaviour
             if (
                 hoverTile.isHighlighted
                 || hoverTile.isSolved
-                || (
-                    isDifferentActiveTile
-                    && !hoverTile.IsFromGenerator
-                    && hoverTile.cid != firstTile.cid
-                )
+                || (isDifferentActiveTile && !hoverTile.IsFromGenerator)
                 || hoverTile.IsNotGrid
             )
                 return;
@@ -168,9 +164,7 @@ public class Field : MonoBehaviour
 
     bool CheckIfTilesMatch(Tile tile, Tile another)
     {
-        return tile.cid > 0
-            && another.cid == tile.cid
-            && (!tile.IsFromGenerator || another.IsFromGenerator);
+        return tile.cid > 0 && another.cid == tile.cid && !tile.IsFromGenerator;
     }
 
     bool CheckMouseOutsideGrid()
@@ -266,7 +260,6 @@ public class Field : MonoBehaviour
 
     Vector2 FindTileCoordinates(Tile tile)
     {
-        // Debug.Log("Field -> _FindTileCoordinates: " + tile.gameObject.name + " | " + tile.gameObject.transform.parent.gameObject.name);
         int x = int.Parse(tile.gameObject.name);
         int y = int.Parse(tile.gameObject.transform.parent.gameObject.name);
         return new Vector2(x, y);
